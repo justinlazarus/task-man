@@ -24,11 +24,11 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [MilestoneInline, CommentInline, CompletionInline,]
 
 class MilestoneAdmin(admin.ModelAdmin):
-    list_display = ('project', 'name', 'create_stamp', 'planned_completion_date',)
+    list_display = ('project', 'name', 'stamp', 'planned_completion_date',)
     inlines = [TaskInline, CommentInline, CompletionInline,]
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('milestone', 'name', 'create_stamp', 'planned_completion_date', 'is_complete')
+    list_display = ('milestone', 'name', 'stamp', 'planned_completion_date', 'is_complete')
     inlines = [CommentInline, CompletionInline,]
  
 admin.site.register(Area)
@@ -38,3 +38,4 @@ admin.site.register(Milestone, MilestoneAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Completion)
 admin.site.register(Comment)
+admin.site.register(FeedEntry)
