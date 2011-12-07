@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block links %}
+{% endblock %}
+
+{% block content %}
+    <div id="feed">
+    {% regroup feeds|dictsortreversed:"stamp" by stamp.date as feed_list %}
+    {% for feed in feed_list %}
+    <h3>{{ feed.grouper }}</h3>
+    <ul>
+        {% for item in feed.list %}
+        <li>{{ item.user }} {{ item.action }} {{ item.content_type }} "{{ item.instance }}" at {{ item.stamp.time }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset-iso-8859-1" /> 
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
+    {% block links %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</head>
+
+<body>
+    <div id="header">
+        <div id="nav-menu">
+        <ul>
+            <li><a href="/projects">Newsfeed</a></li>
+            <li><a href="/">Projects</a></li>
+            <li><a href="/">Budgets</a></li>
+        </ul>
+        </div>
+    </div>
+    <div id=container>
+        <div id="content" class="column">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="menu" class="column">
+            {% block menu %}{% endblock %}
+        </div> 
+        <div id="info" class="column">
+            {% block info %}{% endblock %}
+        </div>
+    </div>
+    <div id="footer">
+        {% block footer %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+body, p {
+    min-width: 550px;
+    font-family: "Courier New";
+    font-size: 14px;
+}
+
+#header {
+   text-align: right;
+   color: black;
+   padding-left: 200px;
+   padding-right: 220px;
+   border-bottom: 1px solid #cccccc; 
+} 
+
+#container {
+    padding-left: 200px;
+    padding-right: 150px;
+}
+
+#container .column {
+    position: relative;
+    float: left;
+}
+
+#content {
+    width: 100%;
+    margin-right: 10px;
+}
+
+#menu {
+    width: 200px;
+    right: 200px;
+    margin-left: -100%;
+}
+
+#info {
+    width: 150px;
+    margin-right: -150px;
+}
+
+#footer {
+    clear: both;
+}
+
+#nav-menu {
+   font-size: 20px;
+}
+
+#nav-menu a:link, a:visited { 
+    text-decoration: none;
+    color: gray;
+}
+#nav-menu a:hover { 
+    text-decoration: none;
+    color: red;
+}
+#nav-menu ol, ul {
+    list-style: none;
+}
+
+#nav-menu li {
+    margin: 20px;
+    display: inline;
+    list-style: none;
+}
+
+#feed {
+    float: left;
+    width: 555px;
+    line-height: 16px;
+}
+
+#feed h3 {
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #747474; 
+}
