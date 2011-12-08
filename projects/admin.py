@@ -20,7 +20,9 @@ class CommentInline(generic.GenericStackedInline):
     extra = 1
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'department', 'planned_completion_date',)
+    list_display = (
+        'name', 'department', 'planned_completion_date', 'is_complete',
+    )
     inlines = [MilestoneInline, CommentInline, CompletionInline,]
 
 class MilestoneAdmin(admin.ModelAdmin):

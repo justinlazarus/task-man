@@ -7,8 +7,6 @@ body, p {
 #header {
    text-align: right;
    color: black;
-   padding-left: 200px;
-   padding-right: 220px;
    border-bottom: 1px solid #cccccc; 
 } 
 
@@ -41,6 +39,17 @@ body, p {
 #footer {
     clear: both;
 }
+
+#login {
+    width: 200px;
+    float: left;
+}
+
+#login p {
+    text-align: left;
+    font-size: 14px;
+}
+
 
 #nav-menu {
    font-size: 20px;
@@ -76,4 +85,14 @@ body, p {
     font-size: 14px;
     line-height: 18px;
     color: #747474; 
+}
+
+#project li {
+    padding: 20px;
+    display: inline;
+    list-style: none;
+}
+
+#project ul {
+    margin: 20px;
 }

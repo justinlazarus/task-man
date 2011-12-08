@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block links %}
+{% endblock %}
+
+{% block content %}
+    <div id="project">
+    {% for project in projects %}
+    {% if not project.is_complete %}
+    <h3>{{ project|capfirst }} ({{ project.department }})</h3>
+        <ul>
+        {% for milestone in project.milestone_set.all %}
+        <li>{{ milestone|capfirst }} by {{ milestone.planned_completion_date }}</li>
+            <ul>
+            {% for task in milestone.task_set.all %}
+            <li>{{ task|capfirst }} by {{ task.planned_completion_date }}</li>
+            {% endfor %}
+            </ul> 
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
