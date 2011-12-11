@@ -96,3 +96,11 @@ body, p {
 #project ul {
     margin: 20px;
 }
+
+#project h3 {
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #747474; 
+}

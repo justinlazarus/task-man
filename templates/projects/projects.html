@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 {% block links %}
 {% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/projects.js"></script> 
+{% endblock %}
 
 {% block content %}
-    <div id="project">
+    <div id="accordion">
     {% for project in projects %}
     {% if not project.is_complete %}
-    <h3>{{ project|capfirst }} ({{ project.department }})</h3>
-        <ul>
+    <h3><a href="#">{{ project|capfirst }} ({{ project.department }})</a></h3>
+        <div>
         {% for milestone in project.milestone_set.all %}
-        <li>{{ milestone|capfirst }} by {{ milestone.planned_completion_date }}</li>
+        <p>{{ milestone|capfirst }} by {{ milestone.planned_completion_date }}</p>
             <ul>
             {% for task in milestone.task_set.all %}
             <li>{{ task|capfirst }} by {{ task.planned_completion_date }}</li>
             {% endfor %}
             </ul> 
         {% endfor %}
-        </ul>
+        </div>
     {% endif %}
     {% endfor %}
     </div>
