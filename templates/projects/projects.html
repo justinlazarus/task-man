@@ -7,20 +7,24 @@
 
 {% block content %}
     <div id="accordion">
-    {% for project in projects %}
-    {% if not project.is_complete %}
-    <h3><a href="#">{{ project|capfirst }} ({{ project.department }})</a></h3>
+    {% regroup projects by department.name as departments %}
+    {% for department in departments %}
+        <h3><a href="#">{{ department.grouper|capfirst }}</a></h3>
         <div>
-        {% for milestone in project.milestone_set.all %}
-        <p>{{ milestone|capfirst }} by {{ milestone.planned_completion_date }}</p>
+            {% for project in department.list %}
+            {% if not project.is_complete %}
+            <p>{{ project|capfirst }}</p>
             <ul>
-            {% for task in milestone.task_set.all %}
-            <li>{{ task|capfirst }} by {{ task.planned_completion_date }}</li>
-            {% endfor %}
+                {% for milestone in project.milestone_set.all %}
+                <li>{{ milestone }}</li>
+                
+                    {% for task in milestone.task_set.all %}
+                    
+                {% endfor %}
             </ul> 
-        {% endfor %}
+            {% endif %}
+            {% endfor %}
         </div>
-    {% endif %}
     {% endfor %}
     </div>
 {% endblock %}
