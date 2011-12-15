@@ -9,19 +9,19 @@
     <div id="accordion">
     {% regroup projects by department.name as departments %}
     {% for department in departments %}
-        <h3><a href="#">{{ department.grouper|capfirst }}</a></h3>
+        <h1><a href="#">{{ department.grouper|capfirst }}</a></h1>
         <div>
             {% for project in department.list %}
             {% if not project.is_complete %}
-            <p>{{ project|capfirst }}</p>
-            <ul>
+            <h2>{{ project|capfirst }}</h2>
                 {% for milestone in project.milestone_set.all %}
-                <li>{{ milestone }}</li>
-                
+                <h3>{{ milestone }}</h3>
+                    <ul>
                     {% for task in milestone.task_set.all %}
-                    
+                    <li> {{ task }} by {{ task.planned_completion_date }}</li> 
+                    {% endfor %}
+                    </ul>
                 {% endfor %}
-            </ul> 
             {% endif %}
             {% endfor %}
         </div>
