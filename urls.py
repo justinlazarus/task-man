@@ -7,8 +7,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/', 'django.contrib.auth.views.login'),
 
-    url(r'^newsfeed/$', 'projects.views.get_newsfeed'),
-    url(r'^projects/$', 'projects.views.get_projects'),
+    url(r'^projects/$', 'projects.views.index'),
+    url(r'^projects/feeds/$', 'projects.views.get_feeds'),
+    url(r'^projects/projects/$', 'projects.views.get_projects'),
+    url(r'^projects/tasks/$', 'projects.views.get_tasks'),
 )
 
 

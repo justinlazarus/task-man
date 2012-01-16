@@ -19,6 +19,10 @@ class CommentInline(generic.GenericStackedInline):
     model = Comment
     extra = 1
 
+class ImpactStatementInline(generic.GenericStackedInline):
+    model = ImpactStatement
+    extra = 1
+
 class ProjectAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'department', 'planned_completion_date', 'is_complete',
@@ -30,8 +34,11 @@ class MilestoneAdmin(admin.ModelAdmin):
     inlines = [TaskInline, CommentInline, CompletionInline,]
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('milestone', 'name', 'stamp', 'planned_completion_date', 'is_complete')
-    inlines = [CommentInline, CompletionInline,]
+    list_display = (
+        'milestone', 'name', 'stamp', 'planned_completion_date', 'is_complete',
+        'is_impactful', 'is_commented',
+    )
+    inlines = [CommentInline, CompletionInline, ImpactStatementInline]
  
 admin.site.register(Area)
 admin.site.register(Department)
@@ -40,4 +47,5 @@ admin.site.register(Milestone, MilestoneAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Completion)
 admin.site.register(Comment)
+admin.site.register(ImpactStatement)
 admin.site.register(FeedEntry)
