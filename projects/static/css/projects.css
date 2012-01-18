@@ -1,0 +1,18 @@
+#content {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#toolbar {
+    padding: 10px 4px;
+    font-size: .7em;
+}
+.list-entry {
+    font-size: .9em;
+}
+
+.list-icon-entry {
+    float: left;
+    display: inline;
+    margin-right: 5px;
+}

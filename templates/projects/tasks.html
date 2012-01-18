@@ -1,0 +1,33 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/tasks.js"></script> 
+
+<div id="content">
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <span id="actions">
+    <button id="add">add task</button>
+    <button id="delete">delete selected</button>
+    <button id="comment">comment on selected</button>
+    <button id="complete">complete selected</button>
+    </span>
+
+    <span id="order">
+    <button id="user">order by user</button>
+    <button id="duedate">order by due date</button>
+    <button id="project">order by project</button>
+    <button id="milestone">order by milestone</button>
+    </span>
+
+</span>
+<div id="tasks">
+    {% regroup tasks by responsible.get_full_name as responsibles %}
+    {% for responsible in responsibles %}
+        <h3 class="ui-widget-header ui-corner-all"><button class="group-user">{{ responsible.grouper|capfirst }}</button></h3>
+        <div>
+            {% for task in responsible.list %}
+            {% if not task.is_complete %}
+            <div id="task-entry" class="list-entry"><input type="checkbox" id="check{{responsible.list.counter}}" /><a href="#">{{ task|capfirst }}</a> due {{ task.planned_completion_date }}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+</div>

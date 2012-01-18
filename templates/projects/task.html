@@ -1,0 +1,53 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/tasks.js"></script> 
+
+
+<div id="content">
+
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    
+
+<span id="actions">
+    
+<button id="add">add task</button>
+    
+<button id="delete">delete selected</button>
+    
+<button id="comment">comment on selected</button>
+    
+<button id="complete">complete selected</button>
+    
+</span>
+
+    
+
+<span id="order">
+    
+<button id="user">order by user</button>
+    
+<button id="duedate">order by due date</button>
+    
+<button id="project">order by project</button>
+    
+<button id="milestone">order by milestone</button>
+    
+</span>
+
+
+
+</span>
+
+
+<div id="task">
+<p>{{ task.milestone }}</p>
+<p>{{ task.name }}</p>
+<p>{{ task.description }}</p>
+<p>{{ task.responsible.name }}</p>
+<p>{{ task.user }}</p>
+<p>{{ task.stamp }}</p>
+<p>{{ task.planned_completion_date }}</p>
+<p>{{ task.completions.all }}</p>
+<p>{{ task.comments.all }}</p>
+
+</div>
+
+</div>

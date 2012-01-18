@@ -1,0 +1,34 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/feeds.js"></script> 
+<div id="content">
+<span id="toolbar" class="ui-widget-header ui-corner-all">
+    <span id="feed-order">
+        <button id="feed-duedate" class="feed-order-button" order="duedate">order by due date</button>
+        <button id="feed-user" class="feed-order-button" order="user">order by user</button>
+        <button id="feed-type" class="feed-order-button" order="content-type">order by type</button>
+    </span>
+</span>
+
+<div id="feed">
+{% ifequal order "duedate" %}
+{% regroup feeds|dictsortreversed:"stamp" by stamp.date as feed_list %}
+{% endifequal %}
+
+{% ifequal order "user" %}
+{% regroup feeds|dictsortreversed:"user.username" by user.username as feed_list %}
+{% endifequal %}
+
+{% ifequal order "content-type" %}
+{% regroup feeds|dictsortreversed:"content_type.name" by content_type.name as feed_list %}
+{% endifequal %}
+
+{% for feed in feed_list %}
+    <h3 class="ui-widget-header ui-corner-all"><button class="group-header" order="{{order}}">{{ feed.grouper }}</button></h3>
+    {% for entry in feed.list %}
+    <div class="list-entry">
+        <button id="entry{{ feed.list.counter }}" class="feed-entry-action" type="{{ entry.content_type.name}}" action="{{ entry.action }}">{{ entry.content_type.name }} {{ entry.action }} by {{ entry.user.get_full_name }} on {{ entry.stamp }} </button>
+        <a href="#">{{ entry.instance }}</a> 
+    </div>
+    {% endfor %}
+{% endfor %}
+</div>
+</div>
