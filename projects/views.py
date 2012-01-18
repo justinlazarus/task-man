@@ -25,6 +25,11 @@ def get_tasks(request):
     return render(request, 'projects/tasks.html', {'tasks': tasks})
 
 @login_required
+def get_task(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    return render(request, 'projects/task.html', {'task': task})
+
+@login_required
 def get_feeds(request):
     if request.is_ajax():
         if request.method == 'POST':
@@ -36,4 +41,4 @@ def get_feeds(request):
 
     feeds = FeedEntry.objects.all().order_by('-user')
 
-    return render(request, 'projects/feeds.html', {'feeds': feeds, 'order': order}) 
+    return render(request, 'projects/feeds.html', {'feeds': feeds, 'order': order})
