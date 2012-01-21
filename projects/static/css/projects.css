@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-#toolbar {
+.tab-toolbar {
     padding: 10px 4px;
     font-size: .7em;
 }

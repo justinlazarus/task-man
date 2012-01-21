@@ -1,7 +1,8 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/tasks.js"></script> 
 
 <div id="content">
-<span id="toolbar" class="ui-widget-header ui-corner-all">
+
+<span id="task_list_toolbar" class="ui-widget-header ui-corner-all tab-toolbar">
     <span id="actions">
     <button id="add">add task</button>
     <button id="delete">delete selected</button>
@@ -15,8 +16,8 @@
     <button id="project">order by project</button>
     <button id="milestone">order by milestone</button>
     </span>
-
 </span>
+
 <div id="tasks">
     {% regroup tasks by responsible.get_full_name as responsibles %}
     {% for responsible in responsibles %}
@@ -31,3 +32,4 @@
     {% endfor %}
 </div>
 </div>
+
