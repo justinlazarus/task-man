@@ -12,6 +12,7 @@ $(function() {
             case "comment": icon = "ui-icon-comment"; break;
             case "completion": icon = "ui-icon-check"; break;
             case "content-type": icon = "ui-icon-copy"; break;
+            case "impact statement": icon = "ui-icon-alert"; break;
         }
         return icon;
     }
@@ -48,8 +49,6 @@ $(function() {
     $(".feed-order-button").each(function() { 
         $(this).on("click", {order: $(this).attr("order")}, reloadFeeds); 
     });
- 
-    
 
     // Add action buttons
     $(".feed-entry-action").each(function() {

@@ -15,7 +15,7 @@ This module employs abstract classes to allow for future modification to common
 elements. Trackable, Completable, Commentable and Impactful are 4 interfaces
 or mixins defined in this module. These mixins employ generic relations to
 allow the 3 core models to all benefit from their functionality without tying
-them to the related models. For example, any future changes to the completable
+them to the related models. For example, any future changes to the Completion
 model will propogate through the inheritance tree to all Completable models. 
 This ensures that the project model will never have to be concerned with the
 way completions are implemented. Concurrently, the database is completely 
