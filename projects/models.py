@@ -195,6 +195,9 @@ class Milestone(Completable, Commentable, Impactful, Trackable):
     def __unicode__(self):
         return "%s" % (self.name)
  
+    class meta:
+        ordering = "project"
+
 class Task(Completable, Commentable, Impactful, Trackable):
     milestone = models.ForeignKey(Milestone)
     name = models.CharField(max_length=32)
