@@ -47,6 +47,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'jidong.urls'
 TEMPLATE_DIRS = (
     '/home/justin/Code/jidong/templates/',
+    '/home/justin/Code/jidong/projects/templates',
 )
 LOGGING = {
     'version': 1,

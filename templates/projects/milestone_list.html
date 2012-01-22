@@ -1,0 +1,31 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/milestone_list.js"></script> 
+
+<div id="milestone_tab_content" class=="tab-content">
+<span id="actions" class="ui-widget-header ui-corner-all tab-toolbar">
+    <span id="actions" class="toolbar-buttonset">
+    <button id="milestone_add" class="toolbar-button" icon="ui-icon-add">add task</button>
+    <button id="milestone_delete" class="toolbar-button" icon="ui-icon-cancel">delete selected</button>
+    <button id="milestone_comment" class="toolbar-button" icon="ui-icon-comment">comment on selected</button>
+    <button id="milestone_complete" class="toolbar-button" icon="ui-icon-check">complete selected</button>
+    </span>
+
+    <span id="order" class="toolbar-buttonset">
+    <button id="milestone_user" class="toolbar-button" icon="ui-icon-person">order by user</button>
+    <button id="milestone_duedate" class="toolbar-button" icon="ui-icon-clock">order by due date</button>
+    <button id="milestone_project" class="toolbar-button" icon="ui-icon-suitcase">order by project</button>
+    </span>
+</span>
+
+<div id="milestones" class="tab-content">
+{% regroup object_list|dictsort:"project.name" by project as projects %}
+{% for project in projects %}
+<h3 class="ui-widget-header ui-corner-all">
+    <button class="header-button">{{ project.grouper|capfirst }} ({{ project.grouper.department|capfirst }})</button>
+</h3>
+    {% for milestone in project.list %}
+        <div id="milestone_entry" class="list-entry">{{ milestone }}</div>
+    {% endfor %}
+</ul>
+{% endfor %}
+</div>
+</div>
