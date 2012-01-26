@@ -10,7 +10,7 @@ $(function() {
          });
     });
 
-    // Add grouping buttons
+    // Add group header buttons
     $(".header-button").each(function() {
         $(this).button({
             text: true,
