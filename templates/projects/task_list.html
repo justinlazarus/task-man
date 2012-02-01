@@ -9,13 +9,6 @@
     <button id="task_comment" class="toolbar-button" icon="ui-icon-comment">comment on selected</button>
     <button id="task_complete" class="toolbar-button" icon="ui-icon-check">complete selected</button>
     </span>
-
-    <span id="task_list_order" class="toolbar-buttonset">
-    <button id="task_user" class="toolbar-button" icon="ui-icon-person">order by user</button>
-    <button id="task_duedate" class="toolbar-button" icon="ui-icon-clock">order by due date</button>
-    <button id="task_project" class="toolbar-button" icon="ui-icon-suitcase">order by project</button>
-    <button id="task_milestone" class="toolbar-button" icon="ui-icon-folder-open">order by milestone</button>
-    </span>
 </span>
 
 {% regroup task_list|dictsort:"responsible.get_full_name" by responsible.get_full_name as responsibles %}

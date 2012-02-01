@@ -9,12 +9,6 @@
     <button id="milestone_comment" class="toolbar-button" icon="ui-icon-comment">comment on selected</button>
     <button id="milestone_complete" class="toolbar-button" icon="ui-icon-check">complete selected</button>
     </span>
-
-    <span id="order" class="toolbar-buttonset">
-    <button id="milestone_user" class="toolbar-button" icon="ui-icon-person">order by user</button>
-    <button id="milestone_duedate" class="toolbar-button" icon="ui-icon-clock">order by due date</button>
-    <button id="milestone_project" class="toolbar-button" icon="ui-icon-suitcase">order by project</button>
-    </span>
 </span>
 
 {% regroup milestone_list|dictsort:"project.name" by project as projects %}
