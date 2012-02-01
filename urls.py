@@ -11,8 +11,8 @@ urlpatterns = patterns('',
 
     # Projects URLS
     url(r'^projects/$', 'projects.views.index'),
-    url(r'^projects/feeds_list/$', ListView.as_view(
-        model=Feed, context_object_name="feed_list"
+    url(r'^projects/feedentry_list/$', ListView.as_view(
+        model=FeedEntry, context_object_name="feedentry_list"
     ),),
     (r'^projects/task_list/$', ListView.as_view(
         model=Task, context_object_name="task_list"
