@@ -1,0 +1,35 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/task_list.js"></script> 
+
+<div id="task_list_tab_content" class="tab-content">
+
+<span id="task_list_toolbar" class="ui-widget-header ui-corner-all tab-toolbar">
+    <span id="task_list_actions" class="toolbar-buttonset">
+    <button id="task_add" class="toolbar-button" icon="ui-icon-plus">add task</button>
+    <button id="task_delete" class="toolbar-button" icon="ui-icon-cancel">delete selected</button>
+    <button id="task_comment" class="toolbar-button" icon="ui-icon-comment">comment on selected</button>
+    <button id="task_complete" class="toolbar-button" icon="ui-icon-check">complete selected</button>
+    </span>
+
+    <span id="task_list_order" class="toolbar-buttonset">
+    <button id="task_user" class="toolbar-button" icon="ui-icon-person">order by user</button>
+    <button id="task_duedate" class="toolbar-button" icon="ui-icon-clock">order by due date</button>
+    <button id="task_project" class="toolbar-button" icon="ui-icon-suitcase">order by project</button>
+    <button id="task_milestone" class="toolbar-button" icon="ui-icon-folder-open">order by milestone</button>
+    </span>
+</span>
+
+{% regroup task_list|dictsort:"responsible.get_full_name" by responsible.get_full_name as responsibles %}
+{% for responsible in responsibles %}
+    <h3 class="ui-widget-header ui-corner-all">
+        <button class="header-button">{{ responsible.grouper|capfirst }}</button>
+    </h3>
+    {% for task in responsible.list %}
+    {% if not task.is_complete %}
+    <div id="task-entry" class="list-entry">
+        <input type="checkbox" id="check{{responsible.list.counter}}" />
+        <a href="#">{{ task|capfirst }}</a> due {{ task.planned_completion_date }}
+    </div>
+    {% endif %}
+    {% endfor %}
+{% endfor %}
+</div>

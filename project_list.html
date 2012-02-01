@@ -17,7 +17,7 @@
     </span>
 </span>
 
-{% regroup milestone_list|dictsort:"project.name" by project as projects %}
+{% regroup object_list|dictsort:"project.name" by project as projects %}
 {% for project in projects %}
     <h3 class="ui-widget-header ui-corner-all">
         <button class="header-button">{{ project.grouper|capfirst }} ({{ project.grouper.department|capfirst }})</button>

@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import ListView
-from projects.models import Milestone
+from projects.models import *
 from django.contrib import admin
 
 admin.autodiscover()
@@ -9,11 +9,18 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/', 'django.contrib.auth.views.login'),
 
+    # Projects URLS
     url(r'^projects/$', 'projects.views.index'),
-    url(r'^projects/feeds/$', 'projects.views.get_feeds'),
-    url(r'^projects/projects/$', 'projects.views.get_projects'),
-    url(r'^projects/tasks/$', 'projects.views.get_tasks'),
-    (r'^projects/milestones/$', ListView.as_view(model=Milestone),),
+    url(r'^projects/feeds_list/$', ListView.as_view(
+        model=Feed, context_object_name="feed_list"
+    ),),
+    (r'^projects/task_list/$', ListView.as_view(
+        model=Task, context_object_name="task_list"
+    ),),
+    (r'^projects/project_list/$', ListView.as_view(
+        model=Project, context_object_name="project_list"
+    ),),
+    (r'^projects/milestone_list/$', ListView.as_view(
+        model=Milestone, context_object_name="milestone_list"
+    ),),
 )
-
-

@@ -1,5 +1,4 @@
 $(function() {
-
     // Add toolbar buttons
     $(".toolbar-button").each(function() {
         $(this).button({
@@ -10,12 +9,12 @@ $(function() {
          });
     });
 
-    // Add group header buttons
+    // Add grouping buttons
     $(".header-button").each(function() {
         $(this).button({
             text: true,
             icons: {
-                primary: "ui-icon-flag"
+                primary: "ui-icon-person"
             }
         });
     });

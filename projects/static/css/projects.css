@@ -1,6 +1,7 @@
 .tab-content {
     width: 60%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tab-toolbar {
@@ -11,6 +12,9 @@
     font-size: .9em;
 }
 
+.list-entry a {
+    text-decoration: none;
+}
 .list-icon-entry {
     float: left;
     display: inline;
