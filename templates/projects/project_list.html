@@ -1,0 +1,28 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/project_list.js"></script> 
+
+<div id="project_tab_content" class="tab-content">
+
+<span id="project_list_toolbar" class="ui-widget-header ui-corner-all tab-toolbar">
+    <span id="project_list_actions" class="toolbar-buttonset">
+    <button id="project_add" class="toolbar-button" icon="ui-icon-plus">add project</button>
+    <button id="project_delete" class="toolbar-button" icon="ui-icon-cancel">delete selected</button>
+    <button id="project_comment" class="toolbar-button" icon="ui-icon-comment">comment on selected</button>
+    <button id="project_complete" class="toolbar-button" icon="ui-icon-check">complete selected</button>
+    </span>
+</span>
+
+{% regroup project_list by department as projects %}
+{% for project in projects %}
+    <h3 class="ui-widget-header ui-corner-all">
+        <button class="header-button">{{ project.grouper|capfirst }}</button>
+    </h3>
+    {% for project in project.list %}
+    {% if not project.is_complete %}
+        <div id="project_entry" class="list-entry">
+            <input type="checkbox" id="check{{project.list.counter}}" project_id="{{project.id}}" />
+            <a href="#">{{ project|capfirst }}</a>
+        </div>
+    {% endif %}
+    {% endfor %}
+{% endfor %}
+</div>

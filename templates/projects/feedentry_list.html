@@ -1,0 +1,17 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/feedentry_list.js"></script> 
+
+<div id="feedentry_tab_content" class="tab-content">
+
+{% regroup feedentry_list|dictsortreversed:"stamp" by stamp.date as feed_list %}
+{% for feed in feed_list %}
+    <h3 class="ui-widget-header ui-corner-all">
+        <button class="group-header" order="{{order}}">{{ feed.grouper }}</button>
+    </h3>
+    {% for entry in feed.list %}
+    <div class="list-entry">
+        <button id="entry{{ feed.list.counter }}" class="feed-entry-action" type="{{ entry.content_type.name}}" action="{{ entry.action }}">{{ entry.content_type.name }} {{ entry.action }} by {{ entry.user.get_full_name }} on {{ entry.stamp }} </button>
+        <a href="#">{{ entry.instance }}</a> 
+    </div>
+    {% endfor %}
+{% endfor %}
+</div>
