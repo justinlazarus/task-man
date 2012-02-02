@@ -24,6 +24,10 @@ $(function() {
     });
 });
 
+function getSelectedTab() {
+    return $('#nav-tabs').tabs('option', 'selected');
+}
+
 function getIcon (type) {
     switch(type) {
         case "added": icon = "ui-icon-plus"; break;
@@ -41,5 +45,3 @@ function getIcon (type) {
     }
     return icon;
 }
-
-

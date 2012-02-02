@@ -15,7 +15,7 @@ $(function() {
         $(this).button({
             text: true,
             icons: {
-                primary: "ui-icon-flag"
+                primary: "ui-icon-folder-open"
             }
         });
     });

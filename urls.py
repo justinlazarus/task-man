@@ -18,9 +18,14 @@ urlpatterns = patterns('',
         model=Task, context_object_name="task_list"
     ),),
     (r'^projects/project_list/$', ListView.as_view(
-        model=Project, context_object_name="project_list"
+        model=Project, context_object_name="project_list",
+        queryset=Project.objects.exclude(completions__isnull=False),
     ),),
     (r'^projects/milestone_list/$', ListView.as_view(
         model=Milestone, context_object_name="milestone_list"
     ),),
+    (r'^projects/project_list/$', ListView.as_view(
+        model=Project, context_object_name="project_list"
+    ),),
+    (r'^projects/complete/$', 'projects.views.complete'),
 )
