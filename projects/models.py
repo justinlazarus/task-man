@@ -208,7 +208,7 @@ class Task(Completable, Commentable, Impactful, Trackable):
     def __unicode__(self):
         return "%s" % (self.name)
    
-@receiver(post_save)
+@receiver(post_save, dispatch_uid="feed_activity_handler")
 def feed_activity_handler(sender, instance, created, **kwargs):
     if sender in (
         Project, Milestone, Task, Comment, Completion, ImpactStatement
@@ -225,7 +225,7 @@ def feed_activity_handler(sender, instance, created, **kwargs):
             ), instance=instance.__unicode__(), object_id=instance.id
         ).save()
 
-@receiver(pre_delete)
+@receiver(pre_delete, dispatch_uid="feed_activity_handler_delete")
 def feed_activity_handler_delete(sender, instance, **kwargs):
     if sender in (
         Project, Milestone, Task, Comment, Completion, ImpactStatement

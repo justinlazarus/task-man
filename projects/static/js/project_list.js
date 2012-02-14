@@ -30,11 +30,20 @@ $(function() {
         $(this).button();
     });
 
-    // Add complete listener
-    $("#project_complete").on("click", complete); 
+    // Add listeners
+    $("#project_complete").on("click", complete_project); 
+    $("#project_delete").on("click", delete_project); 
+    $("#project_add").on("click", add_project);
 });
 
-function complete () {
+function add_project () {
+    $('<div id="add_project"></div>').dialog({
+        autoOpen: false, 
+        title: 'Add Project'
+    }).dialog('open');
+}    
+    
+function complete_project () {
     $("input:checked").each(function() {
         $.post(
             '/projects/complete/', {
@@ -45,4 +54,18 @@ function complete () {
             $('#ui-tabs-1').load('/projects/project_list/');
         });
     });
+}
+
+function delete_project () {
+    $("input:checked").each(function() {
+        $.post(
+            '/projects/delete/', {
+                project_id: $(this).attr('project_id')
+            }
+        ).success(reload);
+    });
+}
+
+function reload () {
+    $('#ui-tabs-1').load('/projects/project_list/');
 }

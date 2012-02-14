@@ -28,4 +28,5 @@ urlpatterns = patterns('',
         model=Project, context_object_name="project_list"
     ),),
     (r'^projects/complete/$', 'projects.views.complete'),
+    (r'^projects/delete/$', 'projects.views.delete_project'),
 )

@@ -18,10 +18,15 @@ def complete(request):
                 ), object_id = POST.get('object_id'), user_id = request.user.id 
             )
             completion.save()
-            message = "it worked!"
-        else:
-            message = "parameter issue"
-    else:
-        message = "didn't get into the post"
 
-    return HttpResponse(message)
+    return HttpResponse()
+
+@login_required
+def delete_project(request):
+    if request.method == 'POST':
+        POST = request.POST
+        if POST.get('project_id'):
+            project = Project.objects.get(pk=POST.get('project_id'))
+            project.delete()
+
+    return HttpResponse()
