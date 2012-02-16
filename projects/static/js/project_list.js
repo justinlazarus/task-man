@@ -4,9 +4,7 @@ $(function() {
     $(".toolbar-button").each(function() {
         $(this).button({
             text: false,
-            icons: {
-                primary: $(this).attr("icon") 
-            }
+            icons: { primary: $(this).attr("icon") }
          });
     });
 
@@ -14,9 +12,7 @@ $(function() {
     $(".header-button").each(function() {
         $(this).button({
             text: true,
-            icons: {
-                primary: "ui-icon-suitcase"
-            }
+            icons: { primary: "ui-icon-suitcase" }
         });
     });
 
@@ -30,19 +26,22 @@ $(function() {
         $(this).button();
     });
 
+    // Add dialog box
+    var $projectDialog = $('<div id="project_dialog"></div>').dialog({
+        autoOpen: false,
+        title: 'Add Project',
+        modal: true
+    });
+
     // Add listeners
     $("#project_complete").on("click", complete_project); 
     $("#project_delete").on("click", delete_project); 
-    $("#project_add").on("click", add_project);
+    $("#project_add").on("click", function() {
+        $projectDialog.dialog('open');
+        $projectDialog.load('/projects/project_list/');
+    });
 });
 
-function add_project () {
-    $('<div id="add_project"></div>').dialog({
-        autoOpen: false, 
-        title: 'Add Project'
-    }).dialog('open');
-}    
-    
 function complete_project () {
     $("input:checked").each(function() {
         $.post(
