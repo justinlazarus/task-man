@@ -26,21 +26,28 @@ $(function() {
         $(this).button();
     });
 
-    // Add dialog box
-    var $projectDialog = $('<div id="project_dialog"></div>').dialog({
-        autoOpen: false,
-        title: 'Add Project',
-        modal: true
-    });
-
     // Add listeners
     $("#project_complete").on("click", complete_project); 
     $("#project_delete").on("click", delete_project); 
-    $("#project_add").on("click", function() {
-        $projectDialog.dialog('open');
-        $projectDialog.load('/projects/project_list/');
-    });
+    $("#project_add").on("click", {url: "/projects/project_list"}, open_dialog);
 });
+
+function open_dialog(event) {
+    //create the div that will hold the dialog box
+    var projectDialog = $('#project_dialog');
+    if ($('#project_dialog').length == 0) {
+        projectDialog = $('<div id="project_dialog"></div>').appendTo('body');
+    }
+
+    // load the passed url into the dialog
+    projectDialog.load(event.data.url);
+
+    // create the dialog box and display it
+    projectDialog.dialog({
+        modal: true,
+        close: function() {projectDialog.dialog("destroy");}
+    });
+}
 
 function complete_project () {
     $("input:checked").each(function() {
