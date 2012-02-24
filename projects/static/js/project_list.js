@@ -29,7 +29,7 @@ $(function() {
     // Add listeners
     $("#project_complete").on("click", complete_project); 
     $("#project_delete").on("click", delete_project); 
-    $("#project_add").on("click", {url: "/projects/project_list"}, open_dialog);
+    $("#project_add").on("click", {url: "/projects/project_create"}, open_dialog);
 });
 
 function open_dialog(event) {

@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import ListView
 from projects.models import *
+from projects.views import CreateProject
 from django.contrib import admin
 
 admin.autodiscover()
@@ -24,9 +25,7 @@ urlpatterns = patterns('',
     (r'^projects/milestone_list/$', ListView.as_view(
         model=Milestone, context_object_name="milestone_list"
     ),),
-    (r'^projects/project_list/$', ListView.as_view(
-        model=Project, context_object_name="project_list"
-    ),),
     (r'^projects/complete/$', 'projects.views.complete'),
     (r'^projects/delete/$', 'projects.views.delete_project'),
+    (r'^projects/project_create/$', CreateProject.as_view()),
 )
