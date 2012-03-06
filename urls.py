@@ -27,5 +27,7 @@ urlpatterns = patterns('',
     ),),
     (r'^projects/complete/$', 'projects.views.complete'),
     (r'^projects/delete/$', 'projects.views.delete_project'),
-    (r'^projects/project_create/$', CreateProject.as_view()),
+    url(r'^projects/project_create/$', CreateProject.as_view(),
+        name="project_create"
+    ),
 )

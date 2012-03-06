@@ -38,5 +38,9 @@ def delete_project(request):
     return HttpResponse()
 
 class CreateProject(CreateView):
-    template_name = "projects/create_project.html"
+    template_name = "projects/project_create.html"
     form_class = ProjectCreateForm
+ 
+    def form_valid(self, form):
+        self.object = form.save()
+        return HttpResponse()

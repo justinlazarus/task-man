@@ -29,7 +29,10 @@ $(function() {
     // Add listeners
     $("#project_complete").on("click", complete_project); 
     $("#project_delete").on("click", delete_project); 
-    $("#project_add").on("click", {url: "/projects/project_create"}, open_dialog);
+    $("#project_add").on(    
+        "click", {url: "/projects/project_create"}, open_dialog
+    );
+    $("#dialog-save").on("click", reload); 
 });
 
 function open_dialog(event) {
@@ -44,7 +47,9 @@ function open_dialog(event) {
 
     // create the dialog box and display it
     projectDialog.dialog({
-        modal: true,
+        title: "Create Project",
+        position: ['center', 'top'],
+        closeOnEscape: true,
         close: function() {projectDialog.dialog("destroy");}
     });
 }
